@@ -1,6 +1,7 @@
 ///////////////// variables //////////////////////
 
 let name = 'pavan';
+
 console.log(name)
 
 let firstName = 'Taraka';
