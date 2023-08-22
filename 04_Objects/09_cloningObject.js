@@ -18,6 +18,21 @@ const circle = {
 //     color: 'Yellow'
 // }, circle)
 
-const another = {... circle}
+// spread operator 
+const newCircle = {... circle};
 
-console.log(another);
+console.log(newCircler);
+
+
+let newNumbers = {
+    age: 19,
+    name: {
+        first: 'Taraka',
+        last: 'Koda'
+    }
+};
+
+let another = {... newNumbers};
+another.age = 20;
+another.name.first = 'Srinu';
+console.log(newNumbers);
