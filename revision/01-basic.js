@@ -160,3 +160,4 @@ function square(number) {
 
 let result =  square(2);
 console.log(result);
+
