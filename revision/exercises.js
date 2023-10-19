@@ -236,7 +236,7 @@ function createAddress(city, state, zipCode) {
         city,
         state,
         zipCode
-    }
+    };
 }
 
 const newAddress = createAddress('Vizag', 'AP', '530041');
@@ -281,3 +281,53 @@ let post = {
     isLive: true
 };
 
+
+//* remove the white space of a string.
+const firstParagraph = 'this is the first paragraph';
+
+const paragraph = new Set(firstParagraph.replace(/\s/g, '').split('').sort().join(''));
+console.log(paragraph);
+
+//* Printing the range of numbers
+
+const numbers = arrayFormRange(-5, 4);
+
+console.log(numbers);
+
+function arrayFormRange(min, max) {
+    let result = [];
+    for (let number = min; number <= max; number++) {
+        result.push(number);
+    }
+    return result; 
+}
+
+//*  Creating an custom includes function.
+const arrayElements = [1, 2, 4, 5, 6, 7, 1];
+console.log(includes(arrayElements, 2));
+
+function includes(array, searchElement) {
+    for (let element of array) {
+        if (element === searchElement) {
+            return true;
+        }
+    }
+    return false;
+}  
+
+//* exclude that number 
+console.log(except(arrayElements, [1, 2]));
+
+function except(array, exclude) {
+    const result = [];
+     for (let number of array) {
+        // if (exclude.indexOf(number) === -1) {
+        //     result.push(number);
+        // }
+        //* we can write the same logic with a simple syntax using the includes method. 
+        if (!exclude.includes(number)) {
+            result.push(number);
+        }
+     }
+     return result;
+};
