@@ -207,3 +207,77 @@ function isPrime(number) {
     }
     return true;
 }
+
+//* Show properties of an objects.
+
+const address = {
+    city: 'Vizag',
+    state: 'Andhra Pradesh',
+    zipCode: '530041'
+};
+
+const emptyObject = {}
+
+function showAddress(obj) {
+    if (Object.keys(obj).length < 1) console.log(`The object is empty`);
+    else {
+        for (let key in obj) {
+            console.log(key, obj[key]);
+        }
+    }
+}
+showAddress(address);
+showAddress(emptyObject);
+
+//* convert the object into a factory function
+
+function createAddress(city, state, zipCode) {
+    return {
+        city,
+        state,
+        zipCode
+    }
+}
+
+const newAddress = createAddress('Vizag', 'AP', '530041');
+console.log(newAddress.constructor);
+console.log(Object.keys(newAddress).length);
+
+//* Lets try to achieve this using a constructor function.
+
+function CreateAddress(city, state, zipCode) {
+    this.city = city;
+    this.state = state;
+    this.zipCode = zipCode;
+}
+
+const newAddress2 = new CreateAddress('vizag', 'andhra pradesh', '530041');
+
+console.log(newAddress2.constructor);
+console.log(CreateAddress.constructor);
+
+//* checking whether the objects are equal or not
+
+function areEqual(address1, address2) {
+    return address1.city === address2.city && 
+        address1.state === address2.state &&
+        address1.zipCode === address2.zipCode
+}
+
+function areSame(address1, address2) {
+    return address1 === address2;
+}
+
+//* create a Blog Post Object.
+let post = {
+    title: 'JavaScript Mastery',
+    body: 'Learn Javascript in 100Days',
+    author: 'Taraka Koda',
+    view: 110,
+    comments: [
+        {author: 'Srinu', body: 'Easy to learn'},
+        {author: 'satya', body: 'Easy to forgot'}
+    ],
+    isLive: true
+};
+
