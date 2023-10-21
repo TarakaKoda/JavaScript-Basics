@@ -331,3 +331,105 @@ function except(array, exclude) {
      }
      return result;
 };
+
+//* Shifting elements.
+const moveNumbers = [1, 2, 3, 4, 5]
+
+const output = move(moveNumbers, 0, -1);
+console.log(output);
+
+function move(array, index, offset) {
+    const copy = [...array];
+    const position = index + offset;
+    if (position >= array.length || position < 0) {
+        console.error('Invalid Offset');
+        return array;
+    }
+    const removedElement = copy.splice(index, 1)[0];
+    copy.splice(position, 0, removedElement);
+    
+    return copy;
+}
+
+//* Count the Occurrences of a element in an array.
+const countNumbers = [1, 2, 3, 4, 1, 3, 2, 4, 5, 2, 1, 5, 6, 2];
+
+console.log(countOccurrences(countNumbers, 2));
+
+function countOccurrences(array, searchElement) {
+    let count = 0;
+    for (let element of array) {
+        if (element === searchElement) {
+            count++;
+        }
+    } 
+    return count;
+};
+console.log(countOccurrencesUsingReduce(countNumbers, 2));
+
+function countOccurrencesUsingReduce(array, searchElement) {
+    return array.reduce((accumulator, currentNumber) => {
+        const occurrences = (currentNumber === searchElement) ? 1 : 0;
+        return accumulator + occurrences;
+    }, 0);
+}
+
+//* Get the maximum number of the array
+
+const maxNumbers = [1, 2, 4, 5, 6, 3, 7, 8];
+
+console.log(getMaxNumber(maxNumbers));
+
+function getMaxNumber(array) {
+    if (array.length === 0) return undefined;
+    let max = 0;
+    for (let number of array) {
+        max = (number > max) ? number : max;
+    }
+    return max;
+}
+
+console.log(getMaxNumberUsingReduce(maxNumbers));
+
+function getMaxNumberUsingReduce(array) {
+    return array.reduce((accumulator, currentNumber) => {
+        return (accumulator > currentNumber) ? accumulator : currentNumber;
+    })
+} 
+
+
+const movies = [
+    { title: 'a', year: 2018, rating: 4.5},
+    { title: 'b', year: 2018, rating: 4.7},
+    { title: 'c', year: 2018, rating: 3},
+    { title: 'd', year: 2017, rating: 4.5}
+]
+
+ console.log(movies.filter(movie => {
+    return movie.year === 2018 && movie.rating > 4;
+ }).sort((movie1, movie2) => {
+    if (movie1.rating > movie2.rating) return 1;
+    if (movie2.rating > movie1.rating) return -1;
+    return 0;
+ }).reverse().map(movie => movie.title));
+
+ //* sum function 
+console.log(sum([1, 2, 3, 4, 5]))
+
+function sum(...numbers) {
+    if (numbers.length === 1 &&  Array.isArray(numbers[0])) {
+        numbers = [...numbers[0]];
+    }
+    return numbers.reduce((accumulator, currentValue) => accumulator + currentValue);
+}
+
+
+//* Circle getters and setters 
+const circle = {
+    radius: 2,
+    get area() {
+        return Math.round(Math.PI * (this.radius * this.radius));
+    }
+}
+console.log(circle.radius);
+console.log(circle.area)
